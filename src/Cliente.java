@@ -28,7 +28,7 @@ public class Cliente {
 	}
 	
 	public String relatorio() {
-		return "{O cliente " + this.nome + " com CPF  " + this.cpf + " tem saldo de --> " + this.saldo + "}";
+		return "{cliente: " + this.nome + ", cpf: " + this.cpf + ", saldo: " + this.saldo + "}";
 	}
 	
 	@Override
