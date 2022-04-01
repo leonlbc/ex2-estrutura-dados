@@ -24,11 +24,11 @@ public class Util {
 		Cliente cliente = new Cliente(cpf);
 
 		if (clientes.pesquisar(cliente) != null){
-			showMessageDialog(null, cliente.getNome() + " possui o mesmo cpf que outro cliente");
+			showMessageDialog(null, "O CPF ja esta cadastrado!");
 		}else {
 			cliente.setNome(nome);
 			clientes.inserir(cliente);
-			showMessageDialog(null, "Cliente cadastrado com sucesso!");
+			showMessageDialog(null, "Cliente cadastrado!");
 		}	
 	}
 
@@ -42,15 +42,15 @@ public class Util {
 		No<Cliente> cliente_encontrado  = clientes.pesquisar(cliente);
 
 		if (cliente_encontrado != null){
-			valor = Double.parseDouble(showInputDialog("Insira o valor a ser sacado:"));
+			valor = Double.parseDouble(showInputDialog("Sacar: R$"));
 			if (valor <= cliente_encontrado.dado.getSaldo()){
 				cliente_encontrado.dado.saque(valor);
-				showMessageDialog(null, "Saque efetuado com sucesso!");
+				showMessageDialog(null, "Saque Concluido");
 			} else {
 				showMessageDialog(null, "Saque invalido!");
 			}
 		}else {
-			showMessageDialog(null, "Cliente não existe!");
+			showMessageDialog(null, "Cliente nao existe!");
 		}
 	}
 	
@@ -64,15 +64,15 @@ public class Util {
 		No<Cliente> encontrado  = clientes.pesquisar(cliente);
 
 		if (encontrado != null){
-			valor = Double.parseDouble(showInputDialog("Insira o valor a ser depositado:"));
+			valor = Double.parseDouble(showInputDialog("Depositar: R$"));
 			if (valor > 0){
 				encontrado.dado.deposito(valor);
-				showMessageDialog(null, "Depósito efetuado com sucesso!");
+				showMessageDialog(null, "Deposito Concluido!");
 			} else {
-				showMessageDialog(null, "Depósito invalido!");
+				showMessageDialog(null, "Depósito Invalido!");
 			}
 		}else {
-			showMessageDialog(null, "Cliente não existe!");
+			showMessageDialog(null, "Cliente nao existe!");
 		}
 	}
 
@@ -98,7 +98,7 @@ public class Util {
 		cliente_existe = clientes.remover(cliente);
 
 		if(cliente_existe) {
-			showMessageDialog(null, "Conta encerrada com sucesso!");
+			showMessageDialog(null, "Conta encerrada!");
 		} else {
 			showMessageDialog(null, "Conta não existe!");
 		}
